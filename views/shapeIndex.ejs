@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<%- include ('header', {title: name + " sightings"}) %>
+  <body>
+    <%- include ('navbar')%>
+    <div
+      class="container mx-auto marginTop"
+      style="width: 200px; margin-top: 5%"
+    >
+      <h1><%= name.toUpperCase()%></h1>
+      <% shape.forEach((i) => { %>
+      <a href="/sighting/<%=i%>">Sighting <%=i+1%></a>
+      <br />
+      <% }); %>
+    </div>
+  </body>
+</html>

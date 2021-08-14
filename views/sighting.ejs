@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<%- include ('header', {title: "Sighting"}) %>
+  <body>
+    <%- include ('navbar')%>
+    <h1 style="text-align: center">Sighting</h1>
+    <div class = "container">
+      <div class = "row">
+        <div class = "col-md-12 info-box">
+      Description: <%=sighting.text%>
+      </div>
+      <div class = "col-md-12 info-box">
+      Date and Time: <%=sighting.date_time%>
+      </div>
+      <div class = "col-md-12 info-box">
+      City: <%=sighting.city%>
+      </div>
+      <div class = "col-md-12 info-box">
+      State: <%=sighting.state%>
+      </div>
+      <div class = "col-md-12 info-box">
+      Shape: <%=sighting.shape%>
+      </div>
+      <div class = "col-md-12 info-box">
+      Duration: <%=sighting.duration%> minutes
+      </div>
+      <div class = "col-md-12 info-box">
+      Summary: <%=sighting.summary%>
+      </div>
+      <% if (sighting.date) { %>
+        <div class = "col-md-12 info-box">
+      Submission Timestamp: <%=sighting.date%>
+      </div>
+      <% } %>
+    </div>
+    </div>
+    <link rel="stylesheet" src="/public/styles.css" />
+  </body>
+</html>

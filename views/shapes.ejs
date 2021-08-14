@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<%- include ('header', {title: "Shapes"}) %>
+  <body>
+    <%- include ('navbar')%>
+    <h1 style="text-align: center">Shapes</h1>
+    <div class = "container">
+      <div class = "row">
+      <% shapes.forEach((shape) => { %>
+        <div class = "col-md-12 info-box">
+<a href="/shapes/<%=shape.toLowerCase()%>"><%=shape%></a>
+</div>
+      <% }) %>
+      </div>
+      </div>
+  </body>
+</html>
