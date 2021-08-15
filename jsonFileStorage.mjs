@@ -118,7 +118,7 @@ export function remove(filename, key, index, callback) {
   edit(filename, (err, jsonContentObj) => {
     if (err)
     {
-      console.eror('remove error', err);
+      console.error('remove error', err);
       callback(err, null);
     }
     const refArr = jsonContentObj[key];
@@ -134,6 +134,21 @@ export function remove(filename, key, index, callback) {
       callback(null, '');
     }
   }, () => {});
+}
+
+export function deleteFunc(filename, request, key, callback) {
+  const { index } = request.params;
+  edit(filename, (err, data) => {
+    if (err) {
+      callback(err, null);
+    }
+    data[key].splice(index, 1); },
+  (err, data) => {
+    if (err) {
+      callback(err, null);
+    }
+    callback(null, data);
+  });
 }
 
 export function replaceOneElement(filename, key, index, replacementTxt, callback) {

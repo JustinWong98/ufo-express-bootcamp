@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 import express from 'express';
 import methodOverride from 'method-override';
-import { read, add, write } from './jsonFileStorage.mjs';
+import {
+  read, add, write, edit, deleteFunc,
+} from './jsonFileStorage.mjs';
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -72,15 +74,16 @@ app.post('/sighting', (request, response) => {
 
 app.put('/sighting/:index', (request, response) => {
   const { index } = request.params;
-  read('data.json', (err, data) => {
-    // Replace the data in the object at the given index
-    data.sightings[index] = request.body;
-    write('data.json', data, (err) => {
-      if (err) {
-        console.log(err);
-      }
-      response.redirect(`./${index}`);
-    });
+  edit('data.json', (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    data.sightings[index] = request.body; },
+  (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    response.redirect(`./${index}`);
   });
 });
 
@@ -90,15 +93,11 @@ app.get('/sighting', (request, response) => {
 
 const handleDelete = (request, response) => {
   // Remove element from DB at given index
-  const { index } = request.params;
-  read('data.json', (err, data) => {
+  deleteFunc('data.json', request, 'sightings', (err) => {
     if (err) {
       console.log(err);
     }
-    data.sightings.splice(index, 1);
-    write('data.json', data, (err) => {
-      response.render('index', data);
-    });
+    response.redirect('/');
   });
 };
 
