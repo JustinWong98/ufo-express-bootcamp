@@ -1,17 +1,34 @@
 /* eslint-disable no-unused-vars */
 import express from 'express';
 import methodOverride from 'method-override';
+import cookieParser from 'cookie-parser';
 import {
   read, add, write, edit, deleteFunc,
 } from './jsonFileStorage.mjs';
 
 const app = express();
 app.set('view engine', 'ejs');
+app.use(cookieParser());
+
+let visits = 0;
 
 // Configure Express to parse request body data into request.body
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
+
+// function validateCookie(req, res, next) {
+//   const { cookies } = req;
+//   console.log(cookies);
+//   if (req.cookies.visits) {
+//     visits = Number(req.cookies.visits); // get the value from the request
+//     console.log(`${visits} visits`);
+//   }
+//   else {
+//     res.cookie('visits', 1);
+//   }
+//   next();
+// }
 
 const handleIncomingRequest = (request, response) => {
   read('data.json', (err, data) => {
@@ -22,13 +39,6 @@ const handleIncomingRequest = (request, response) => {
     response.render('sighting', ejsData);
   });
 };
-
-// const handleEditWrite = (err, jsonStrData) => {
-//   if (err) {
-//     console.log(`error ${err}`);
-//   }
-//   console.log('success!');
-// };
 
 const handleEditRequest = (request, response) => {
   read('data.json', (err, data) => {
@@ -49,7 +59,13 @@ const handleIndex = (req, res) => {
       sight.index = i;
     });
     console.log(err);
-    res.render('index', data);
+    if (req.cookies.visits) {
+      visits = Number(req.cookies.visits); // get the value from the request
+    }
+    visits += 1;
+    res.cookie('visits', visits);
+    console.log(`Current cookie key and value: visits: ${visits}`);
+    res.render('index', { data, visits });
   });
 };
 

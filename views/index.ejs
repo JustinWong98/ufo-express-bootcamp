@@ -11,7 +11,10 @@
             <div class="panel-heading">
               <div class="row">
                 <div class="col col-xs-6">
-                  <h3 class="panel-title">UFO Sighting List</h3>
+                  <h3 class="panel-title">
+                    UFO Sightings! So far, we have had <%= visits%>
+                    extraterrestrial visits to this page.
+                  </h3>
                 </div>
                 <div class="btn-group">
                   <button type="button" class="btn">
@@ -28,12 +31,12 @@
                 <thead>
                   <tr align="center">
                     <th>Options</th>
-                    <th class="hidden-xs">ID</th>
+                    <th>ID</th>
                     <th>City</th>
                     <th>Summary</th>
                   </tr>
                 </thead>
-                <% sightings.forEach((sight,i) => { %>
+                <% data.sightings.forEach((sight,i) => { %>
                 <tbody>
                   <tr align="center">
                     <td>
@@ -71,21 +74,10 @@
       </div>
     </div>
     <!-- /container -->
-
     <script
       type="text/javascript"
       src="//platform.twitter.com/widgets.js"
     ></script>
-    <script src="../js/src/alert.js"></script>
-    <script src="../js/src/button.js"></script>
-    <script src="../js/src/carousel.js"></script>
-    <script src="../js/src/collapse.js"></script>
-    <script src="../js/src/index.js"></script>
-    <script src="../js/src/modal.js"></script>
-    <script src="../js/src/popover.js"></script>
-    <script src="../js/src/popover.js"></script>
-    <script src="../js/src/scrollspy.js"></script>
-    <script src="../js/src/tab.js"></script>
-    <script src="../js/src/toast.js"></script>
+    <script></script>
   </body>
 </html>

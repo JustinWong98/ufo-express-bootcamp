@@ -2018,7 +2018,8 @@ pre code {
 
 .table th,
 .table td {
-  padding: 2% 0;
+  padding: 2% 0%;
+  align-items: center;
   vertical-align: top;
   border: 1px solid grey;
 }
