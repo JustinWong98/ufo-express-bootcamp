@@ -2,15 +2,32 @@
 <%- include ('header', {title: "Shapes"}) %>
   <body>
     <%- include ('navbar')%>
-    <h1 style="text-align: center">Shapes</h1>
-    <div class = "container">
-      <div class = "row">
+     <h1  class = "header-text" style="text-align: center">A COLLECTION OF UFO SHAPES, CLICK ON THEM TO SEE WHICH SIGHTINGS HAVE THAT SHAPE</h1>
+    <div class = "container justify-content-center">
       <% shapes.forEach((shape) => { %>
-        <div class = "col-md-12 info-box">
-<a href="/shapes/<%=shape.toLowerCase()%>"><%=shape%></a>
+        <div class = "info-box page-header">
+<a href="/shapes/<%=shape.toLowerCase()%>" class="seperated"><%=shape%></a>
 </div>
       <% }) %>
       </div>
-      </div>
+ 
+    <script
+      type="text/javascript"
+      src="//platform.twitter.com/widgets.js"
+    ></script>
+    <script src="../js/src/alert.js"></script>
+    <script src="../js/src/button.js"></script>
+    <script src="../js/src/carousel.js"></script>
+    <script src="../js/src/collapse.js"></script>
+    <script src="../js/src/index.js"></script>
+    <script src="../js/src/modal.js"></script>
+    <script src="../js/src/popover.js"></script>
+    <script src="../js/src/popover.js"></script>
+    <script src="../js/src/scrollspy.js"></script>
+    <script src="../js/src/tab.js"></script>
+    <script src="../js/src/toast.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
   </body>
 </html>

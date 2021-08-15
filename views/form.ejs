@@ -5,7 +5,7 @@
     <main class="my-form">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
               <div class="card-header">Submit your UFO Sighting</div>
                     <div class="card justify-content-center align-items-center">
                         <div class="card-body">
@@ -15,14 +15,14 @@
         method="POST">
                                 <div class="form-group row">
                                     <label for="text" class="col-md-4 col-form-label text-md-right">Description</label>
-                                    <div class="col-md-6">
-                                        <textarea id="text" name="text" class = "form-control"></textarea>
+                                    <div class="col-md-8">
+                                        <textarea id="text" name="text" class = "form-control" rows="10" cols= "50"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="date_time" class="col-md-4 col-form-label text-md-right">Date and Time</label>
-                                    <div class="col-md-6">
-                                        <input  type="datetime-local"
+                                    <label for="date_time" class="col-md-4 col-form-label text-md-right">Date</label>
+                                    <div class="col-md-8">
+                                        <input  type="date"
           id="date_time"
           name="date_time" class = "form-control">
                                     </div>
@@ -30,28 +30,28 @@
 
                                 <div class="form-group row">
                                     <label for="city" class="col-md-4 col-form-label text-md-right">City</label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <input type="text" id="city" name="city" class = "form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="state" class="col-md-4 col-form-label text-md-right">State</label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <input type="text" id="state" name="state" class="form-control">
                                     </div>
                                 </div>
 
                                  <div class="form-group row">
                                     <label for="shape" class="col-md-4 col-form-label text-md-right">Shape of UFO</label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <input type="text" id="shape" class="form-control" name="shape">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="duration" class="col-md-4 col-form-label text-md-right">Duration (in minutes)</label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <input type="number"
           id="duration"
           name="duration"
@@ -62,12 +62,12 @@
 
                                 <div class="form-group row">
                                     <label for="summary" class="col-md-4 col-form-label text-md-right">Short Summary</label>
-                                    <div class="col-md-6">
-                                        <input type="text" id="summary" class="form-control" name="summary">
+                                    <div class="col-md-8">
+                                        <textarea id="summary" class="form-control" name="summary" rows="3" cols= "50"></textarea>
                                     </div>
                                 </div>
 <input name="date" type="hidden" /><br />
-                                    <div class="col-md-6 offset-md-4">
+                                    <div class="col-md-8 offset-md-4">
                                         <button type="submit" class="btn btn-primary" value="Submit" onclick="return validform()">
                                         Submit
                                         </button>
@@ -99,6 +99,9 @@
         form.date.value = new Date().toString();
       };
 
+      let today = new Date().toISOString().split("T")[0];
+      document.getElementsByName("date_time")[0].setAttribute('max', today);
+
       const validform = function () {
   const a = document.forms['form'].text.value;
   const b = document.forms['form'].date_time.value;
@@ -116,7 +119,8 @@
   {
     alert('Please enter a date and time of the sighting!');
     return false;
-  } if (c === null || c === '')
+  } 
+  if (c === null || c === '')
   {
     alert('Please enter the city where the UFO was sighted!');
     return false;
@@ -142,5 +146,25 @@
 };
 
       </script>
+
+    <script
+      type="text/javascript"
+      src="//platform.twitter.com/widgets.js"
+    ></script>
+    <script src="../js/src/alert.js"></script>
+    <script src="../js/src/button.js"></script>
+    <script src="../js/src/carousel.js"></script>
+    <script src="../js/src/collapse.js"></script>
+    <script src="../js/src/index.js"></script>
+    <script src="../js/src/modal.js"></script>
+    <script src="../js/src/popover.js"></script>
+    <script src="../js/src/popover.js"></script>
+    <script src="../js/src/scrollspy.js"></script>
+    <script src="../js/src/tab.js"></script>
+    <script src="../js/src/toast.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
   </body>
 </html>
+

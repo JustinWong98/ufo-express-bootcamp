@@ -1,20 +1,27 @@
-<nav class="navbar navbar-light bg-light">
-  <div class="navbar-header">
-    <span class="navbar-brand mb-0 h1 navbar-text">UFO Sightings</span>
+<div
+  class="navbar navbar-inverse"
+  style="
+    background-color: #bbbbbb;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 2%;
+    justify-content: flex-start;
+  "
+>
+  <a class="brand" style="color: black; font-size: 180%">UFO SIGHTINGS</a>
+  <div class="navbar-inner">
+    <ul class="nav" id="navList">
+      <li class="active">
+        <a href="/" class="nav-link active black">INDEX</a>
+      </li>
+      <li><a href="./sighting" class="nav-link black">SUBMIT A SIGHTING</a></li>
+      <li><a href="../shapes" class="nav-link black">SHAPES</a></li>
   </div>
-  <ul class="nav" id="navList">
-    <a href="/" class="nav-link active">Index</a>
-    <a href="./sighting" class="nav-link">Submit a Sighting</a>
-    <a href="../shapes" class="nav-link">List of Shapes</a>
-  </ul>
-  <form class="navbar-form navbar-left">
-    <div class="form-group">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Search for a shape"
-      />
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-  </form>
-</nav>
+  <div class = "pull-right">
+    <ul class ="nav navbar-nav">
+    <a class="copyright-text brand" style="color: black;">
+      © 1983 HACKERCORP
+    </a>
+  </div>
+</div>

@@ -2,51 +2,151 @@
 <%- include ('header', {title: "Edit a Sighting"}) %>
   <body>
     <%- include ('navbar') %>
-    <div class="container mx-auto" style="width: 200px; margin-top: 5%">
-      <form action="/sighting/<%= sighting.index %>?_method=PUT" method="POST">
-        <label for="text">Description:</label><br />
-        <textarea id="text" name="text"><%= sighting.text %></textarea><br />
-        <label for="date_time">Date and Time:</label><br />
-        <input
-          type="text"
+
+
+<main class="my-form">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+              <div class="card-header">Edit your UFO Sighting</div>
+                    <div class="card justify-content-center align-items-center">
+                        <div class="card-body">
+                            <form action="/sighting/<%= sighting.index %>?_method=PUT" method="POST">
+                                <div class="form-group row">
+                                    <label for="text" class="col-md-4 col-form-label text-md-right">Description</label>
+                                    <div class="col-md-8">
+                                        <textarea id="text" name="text" class = "form-control" rows="10" cols= "50"><%= sighting.text %></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="date_time" class="col-md-4 col-form-label text-md-right">Date</label>
+                                    <div class="col-md-8">
+                                        <input  type="date"
           id="date_time"
-          name="date_time"
-          value="<%= sighting.date_time %>"
-        /><br />
-        <label for="city">City:</label><br />
-        <input
-          type="text"
-          id="city"
-          name="city"
-          value="<%= sighting.city %>"
-        /><br />
-        <label for="state">State:</label><br />
-        <input
-          type="text"
-          id="state"
-          name="state"
-          value="<%= sighting.state %>"
-        /><br />
-        <label for="shape">Shape:</label><br />
-        <input
-          type="text"
-          id="shape"
-          name="shape"
-          value="<%= sighting.shape %>"
-        /><br />
-        <label for="duration">Duration (min):</label><br />
-        <input
-          type="text"
+          name="date_time" class = "form-control" value="<%= sighting.date_time %>">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="city" class="col-md-4 col-form-label text-md-right">City</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="city" name="city" class = "form-control " value="<%= sighting.city %>">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="state" class="col-md-4 col-form-label text-md-right">State</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="state" name="state" class="form-control" value="<%= sighting.state %>">
+                                    </div>
+                                </div>
+
+                                 <div class="form-group row">
+                                    <label for="shape" class="col-md-4 col-form-label text-md-right">Shape of UFO</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="shape" class="form-control" name="shape" value="<%= sighting.shape %>">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="duration" class="col-md-4 col-form-label text-md-right">Duration (in minutes)</label>
+                                    <div class="col-md-8">
+                                        <input type="number"
           id="duration"
           name="duration"
           value="<%= sighting.duration %>"
-        /><br />
-        <label for="summary">Summary:</label><br />
-        <textarea id="summary" name="summary"><%= sighting.summary %></textarea
-        ><br />
-        <input type="submit" value="Submit" />
-      </form>
+          min="1"
+          max="600" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="summary" class="col-md-4 col-form-label text-md-right">Short Summary</label>
+                                    <div class="col-md-8">
+                                        <textarea id="summary" class="form-control" name="summary" rows="3" cols= "50"><%= sighting.summary %></textarea>
+                                    </div>
+                                </div>
+<input name="date" type="hidden" /><br />
+                                    <div class="col-md-8 offset-md-4">
+                                        <button type="submit" class="btn btn-primary" value="Submit" onclick="return validform()">
+                                        Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
     </div>
+
+<script>
+    
+      let today = new Date().toISOString().split("T")[0];
+      document.getElementsByName("date_time")[0].setAttribute('max', today);
+
+      const validform = function () {
+  const a = document.forms['form'].text.value;
+  const b = document.forms['form'].date_time.value;
+  const c = document.forms['form'].city.value;
+  const d = document.forms['form'].state.value;
+  const e = document.forms['form'].shape.value;
+  const f = document.forms['form'].duration.value;
+  const g = document.forms['form'].summary.value;
+
+  if (a === null || a === '')
+  {
+    alert('Please provide a description!');
+    return false;
+  } if (b === null || b === '')
+  {
+    alert('Please enter a date and time of the sighting!');
+    return false;
+  } 
+  if (c === null || c === '')
+  {
+    alert('Please enter the city where the UFO was sighted!');
+    return false;
+  } if (d === null || d === '')
+  {
+    alert('Please enter the state where the UFO was sighted!');
+    return false;
+  } if (e === null || e === '')
+  {
+    alert('Please give the shape of the UFO!');
+    return false;
+  }
+  if (f === null || f === '')
+  {
+    alert('Please enter the duration of the UFO sighting!');
+    return false;
+  }
+  if (g === null || g === '')
+  {
+    alert('Please give a short summary of the UFO sighting!');
+    return false;
+  }
+};
+
+</script>
+    <script
+      type="text/javascript"
+      src="//platform.twitter.com/widgets.js"
+    ></script>
+    <script src="../js/src/alert.js"></script>
+    <script src="../js/src/button.js"></script>
+    <script src="../js/src/carousel.js"></script>
+    <script src="../js/src/collapse.js"></script>
+    <script src="../js/src/index.js"></script>
+    <script src="../js/src/modal.js"></script>
+    <script src="../js/src/popover.js"></script>
+    <script src="../js/src/popover.js"></script>
+    <script src="../js/src/scrollspy.js"></script>
+    <script src="../js/src/tab.js"></script>
+    <script src="../js/src/toast.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

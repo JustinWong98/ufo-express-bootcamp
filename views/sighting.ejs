@@ -2,14 +2,14 @@
 <%- include ('header', {title: "Sighting"}) %>
   <body>
     <%- include ('navbar')%>
-    <h1 style="text-align: center">Sighting</h1>
+    <h1  class = "header-text" style="text-align: center">UFOS ARE REAL! DO NOT TRUST THE GOVERNMENT!</h1>
     <div class = "container">
-      <div class = "row">
-        <div class = "col-md-12 info-box">
+      <div class = "row" style = "height: 50vh;">
+        <div class = "col-md-12 info-box ">
       Description: <%=sighting.text%>
       </div>
       <div class = "col-md-12 info-box">
-      Date and Time: <%=sighting.date_time%>
+      Date: <%=sighting.date_time%>
       </div>
       <div class = "col-md-12 info-box">
       City: <%=sighting.city%>
@@ -34,5 +34,25 @@
     </div>
     </div>
     <link rel="stylesheet" src="/public/styles.css" />
+
+    <script
+      type="text/javascript"
+      src="//platform.twitter.com/widgets.js"
+    ></script>
+    <script src="../js/src/alert.js"></script>
+    <script src="../js/src/button.js"></script>
+    <script src="../js/src/carousel.js"></script>
+    <script src="../js/src/collapse.js"></script>
+    <script src="../js/src/index.js"></script>
+    <script src="../js/src/modal.js"></script>
+    <script src="../js/src/popover.js"></script>
+    <script src="../js/src/popover.js"></script>
+    <script src="../js/src/scrollspy.js"></script>
+    <script src="../js/src/tab.js"></script>
+    <script src="../js/src/toast.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
   </body>
 </html>
+
