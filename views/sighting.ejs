@@ -2,43 +2,58 @@
 <%- include ('header', {title: "Sighting"}) %>
   <body>
     <%- include ('navbar')%>
-    <h1  class = "header-text" style="text-align: center">UFOS ARE REAL! DO NOT TRUST THE GOVERNMENT!</h1>
+    <h5  class = "header-text" style="text-align: center">PSA: UFOS ARE REAL! DO NOT TRUST THE GOVERNMENT!</h5>
     <div class = "container">
       <div class = "row" style = "height: 50vh;">
         <div class = "col-md-12 info-box ">
-      Description: <%=sighting.text%>
+      Description: <h3><%=sighting.text%></h3>
       </div>
       <div class = "col-md-12 info-box">
-      Date: <%=sighting.date_time%>
+      Date: <h3><%=sighting.date_time%></h3>
       </div>
       <div class = "col-md-12 info-box">
-      City: <%=sighting.city%>
+      City: <h3><%=sighting.city%></h3>
       </div>
       <div class = "col-md-12 info-box">
-      State: <%=sighting.state%>
+      State: <h3><%=sighting.state%></h3>
       </div>
       <div class = "col-md-12 info-box">
-      Shape: <%=sighting.shape%>
+      Shape: <h3><%=sighting.shape%></h3>
       </div>
       <div class = "col-md-12 info-box">
-      Duration: <%=sighting.duration%> minutes
+      Duration: <h3><%=sighting.duration%> minutes</h3>
       </div>
       <div class = "col-md-12 info-box">
-      Summary: <%=sighting.summary%>
+      Summary: <h3><%=sighting.summary%></h3>
       </div>
       <% if (sighting.date) { %>
         <div class = "col-md-12 info-box">
-      Submission Timestamp: <%=sighting.date%>
+      Submission Timestamp: <h3 id='timestamp'><%=sighting.date%></h3>
       </div>
       <% } %>
+      <div id = 'moment'> </div>
     </div>
     </div>
     <link rel="stylesheet" src="/public/styles.css" />
-
+    <script>
+</script>
     <script
       type="text/javascript"
       src="//platform.twitter.com/widgets.js"
     ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.js" integrity="sha512-z8IfZLl5ZASsWvr1syw5rkpo2HKBexjwzYDaUkIfoWo0aEqL/MgGKniDouh5DmsD9YrisbM+pihyCKIHL9VucQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      const momentFunc = () => {
+      moment.defaultFormat = "dddd, MMMM Do, YYYY";
+      const momentShown = document.getElementById('moment')
+      const currentMoment = moment().format("dddd, MMMM Do, YYYY");
+      const timestampValue = document.getElementById('timestamp').innerText
+      const momentValue = moment(timestampValue, moment.defaultFormat).toDate()
+      const diffValue = moment(momentValue).fromNow()
+     momentShown.innerText = diffValue
+      }
+      setTimeout(momentFunc, 10)
+    </script>
   </body>
 </html>
 

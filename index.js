@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 import express from 'express';
+import moment from 'moment';
+
 import methodOverride from 'method-override';
 import cookieParser from 'cookie-parser';
 import {
@@ -58,7 +60,6 @@ const handleIndex = (req, res) => {
     sightings.forEach((sight, i) => {
       sight.index = i;
     });
-    console.log(err);
     if (req.cookies.visits) {
       visits = Number(req.cookies.visits); // get the value from the request
     }
@@ -83,7 +84,6 @@ app.post('/sighting', (request, response) => {
       const { sightings } = data;
       const lastIndex = sightings.length - 1;
       response.redirect(`./sighting/${lastIndex}`);
-    // res.render('form', yearObj);
     });
   });
 });
@@ -94,7 +94,8 @@ app.put('/sighting/:index', (request, response) => {
     if (err) {
       console.log(err);
     }
-    data.sightings[index] = request.body; },
+    data.sightings[index] = request.body;
+  },
   (err, data) => {
     if (err) {
       console.log(err);

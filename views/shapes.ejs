@@ -2,11 +2,11 @@
 <%- include ('header', {title: "Shapes"}) %>
   <body>
     <%- include ('navbar')%>
-     <h1  class = "header-text" style="text-align: center">A COLLECTION OF UFO SHAPES, CLICK ON THEM TO SEE WHICH SIGHTINGS HAVE THAT SHAPE</h1>
+     <h6  class = "header-text" style="text-align: center">A COLLECTION OF UFO SHAPES, CLICK ON THEM TO SEE WHICH SIGHTINGS HAVE THAT SHAPE</h6>
     <div class = "container justify-content-center">
       <% shapes.forEach((shape) => { %>
         <div class = "info-box page-header">
-<a href="/shapes/<%=shape.toLowerCase()%>" class="seperated"><%=shape%></a>
+<h4><a href="/shapes/<%=shape.toLowerCase()%>" class="seperated"><%=shape%></a></h4>
 </div>
       <% }) %>
       </div>

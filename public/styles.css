@@ -67,6 +67,7 @@ $cyan:     #00aaaad0 !default;
 
 .info-box {
   font-size: 20px;
+  margin-top: 20px;
 }
 
 .header-text {
@@ -78,9 +79,9 @@ $cyan:     #00aaaad0 !default;
 }
 
 .seperated {
-  margin: 3% 0;
+  margin: 5% 0;
   display: inline-flex;
-  font-size: 200%;
+  font-size: 150%;
 }
 
 .shapes {
@@ -10980,4 +10981,16 @@ button.bg-dark:focus {
 .navbar-inverse .nav-collapse .navbar-search {
   border-top-color: #000000;
   border-bottom-color: #000000;
+}
+
+@media only screen and (max-width: 600px) {
+  .header-text {
+    font-size: 20px;
+  }
+  .brand {
+    font-size: 15px;
+  }
+  .nav-link {
+    font-size: 18px;
+  }
 }
