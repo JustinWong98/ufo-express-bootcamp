@@ -6,31 +6,34 @@
     <div class = "container">
       <div class = "row" style = "height: 50vh;">
         <div class = "col-md-12 info-box ">
-      Description: <h3><%=sighting.text%></h3>
+      Description: <h3><%=ejsData.sighting.text%></h3>
       </div>
       <div class = "col-md-12 info-box">
-      Date: <h3><%=sighting.date_time%></h3>
+      Date: <h3><%=ejsData.sighting.date_time%></h3>
       </div>
       <div class = "col-md-12 info-box">
-      City: <h3><%=sighting.city%></h3>
+      City: <h3><%=ejsData.sighting.city%></h3>
       </div>
       <div class = "col-md-12 info-box">
-      State: <h3><%=sighting.state%></h3>
+      State: <h3><%=ejsData.sighting.state%></h3>
       </div>
       <div class = "col-md-12 info-box">
-      Shape: <h3><%=sighting.shape%></h3>
+      Shape: <h3><%=ejsData.sighting.shape%></h3>
       </div>
       <div class = "col-md-12 info-box">
-      Duration: <h3><%=sighting.duration%> minutes</h3>
+      Duration: <h3><%=ejsData.sighting.duration%> minutes</h3>
       </div>
       <div class = "col-md-12 info-box">
-      Summary: <h3><%=sighting.summary%></h3>
+      Summary: <h3><%=ejsData.sighting.summary%></h3>
       </div>
-      <% if (sighting.date) { %>
+      <% if (ejsData.sighting.date) { %>
         <div class = "col-md-12 info-box">
-      Submission Timestamp: <h3 id='timestamp'><%=sighting.date%></h3>
+      Submission Timestamp: <h3 id='timestamp'><%=ejsData.sighting.date%></h3>
       </div>
       <% } %>
+      <div class = "col-md-12 info-box">
+        <h4><a href="/sighting/<%= fav.index%>/favorite">Favorite this Sighting</a></h4>
+      </div>
       <div id = 'moment'> </div>
     </div>
     </div>
@@ -46,7 +49,6 @@
       const momentFunc = () => {
       moment.defaultFormat = "dddd, MMMM Do, YYYY";
       const momentShown = document.getElementById('moment')
-      const currentMoment = moment().format("dddd, MMMM Do, YYYY");
       const timestampValue = document.getElementById('timestamp').innerText
       const momentValue = moment(timestampValue, moment.defaultFormat).toDate()
       const diffValue = moment(momentValue).fromNow()

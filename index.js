@@ -13,6 +13,7 @@ app.set('view engine', 'ejs');
 app.use(cookieParser());
 
 let visits = 0;
+let favorite = '';
 
 // Configure Express to parse request body data into request.body
 app.use(express.urlencoded({ extended: false }));
@@ -38,7 +39,9 @@ const handleIncomingRequest = (request, response) => {
     const sighting = data.sightings[index];
     sighting.index = index;
     const ejsData = { sighting };
-    response.render('sighting', ejsData);
+    const fav = { };
+    fav.index = index;
+    response.render('sighting', { ejsData, fav });
   });
 };
 
@@ -66,6 +69,7 @@ const handleIndex = (req, res) => {
     visits += 1;
     res.cookie('visits', visits);
     console.log(`Current cookie key and value: visits: ${visits}`);
+    console.log(req.cookies.favorite);
     res.render('index', { data, visits });
   });
 };
@@ -153,6 +157,35 @@ app.get('/nav', (req, res) => {
   res.render('navbar');
 });
 
+const handleFavoriteRequest = (req, res) => {
+  read('data.json', (err, data) => {
+    if (err) {
+      console.log('read error', err);
+    }
+    const { index } = req.params;
+    favorite += index;
+    if (req.cookies.favorite) { res.cookie('favorite', favorite); }
+    res.redirect(`/sighting/${index}`);
+  }); };
+
+const handleFavoriteIndex = (req, res) => {
+  // const favArray = [];
+  // const cookiesArray = req.headers.cookie.split(';').map((cookie) => cookie.trim());
+  // const cookiesHashmap = cookiesArray.reduce((all, cookie) => {
+  //   const [cookieName, value] = cookie.split('=');
+  //   return {
+  //     [cookieName]: value,
+  //     ...all,
+  //   };
+  // }, {});
+
+  // console.log(cookiesHashmap.favorite);
+  // const fav = { };
+  // fav.favorite = cookiesHashmap.favorite;
+  // console.log(fav.favorite);
+  res.render('favorites');
+};
+
 app.get('/sighting/:index', handleIncomingRequest);
 app.get('/sighting/:index/edit', handleEditRequest);
 app.get('/', handleIndex);
@@ -160,4 +193,6 @@ app.get('/index', handleIndex);
 app.delete('/sighting/:index', handleDelete);
 app.get('/shapes', handleShapeRequest);
 app.get('/shapes/:shape', handleOneShapeRequest);
+app.get('/sighting/:index/favorite', handleFavoriteRequest);
+app.get('/favorites', handleFavoriteIndex);
 app.listen(3004);

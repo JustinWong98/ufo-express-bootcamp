@@ -111,7 +111,37 @@
   const f = document.forms['form'].duration.value;
   const g = document.forms['form'].summary.value;
 
-
+  if (a === null || a === '')
+  {
+    alert('Please provide a description!');
+    return false;
+  } if (b === null || b === '')
+  {
+    alert('Please enter a date and time of the sighting!');
+    return false;
+  } if (c === null || c === '')
+  {
+    alert('Please enter the city where the UFO was sighted!');
+    return false;
+  } if (d === null || d === '')
+  {
+    alert('Please enter the state where the UFO was sighted!');
+    return false;
+  } if (e === null || e === '')
+  {
+    alert('Please give the shape of the UFO!');
+    return false;
+  }
+  if (f === null || f === '')
+  {
+    alert('Please enter the duration of the UFO sighting!');
+    return false;
+  }
+  if (g === null || g === '')
+  {
+    alert('Please give a short summary of the UFO sighting!');
+    return false;
+  }
  
 };
 
